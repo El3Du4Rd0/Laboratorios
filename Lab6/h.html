@@ -1,18 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <meta charset="utf-8">
         <title>Laboratorio 6</title>
-        <script src="j.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
+
     <body>
-        <h1>Validador de Contraseñas</h1>
-        <form id="formPassword">
-            <label for="password">Contraseña:</label>
-            <input type="text" id="password" name="password">
-            <label for="passwordC">Confirmar Contraseña:</label>
-            <input type="text" id="passwordC" name="passwordC">
-            <input type="submit">
-        </form>
+
+        <p>Comprueba tu contraseña</p>
+
+            <input id="contrasenia_1" class="input" type="password" placeholder="Ingresar contraseña">
+            <input id="contrasenia_2" class="input" type="password" placeholder="Comprobar contraseña">
+
+            <button id="boton_comprobar">Comprobar</button>
+            <p id="prrafo"></p>
+
+            <p id="cambio_font">
+                Cambia esta fuente moviendo el mouse
+            </p>
+            <p id = "cambiar_fuente">
+                aqui
+            </p>
+
+            <p>
+                ¿Por qué es una buena práctica usar JavaScript para checar que sean válidos los inputs de las formas antes de enviar los datos al servidor?<br>
+                Es fundamental para garantizar la integridad y seguridad de los datos, ya que se puede intentar eludir la validación y robar la información<br><br>
+                ¿Cómo puedes saltarte la seguridad de validaciones hechas con JavaScript?<br>
+                La validacion se puede saltar al desactivar el JavaScript en el navegador<br><br>
+                Si te puedes saltar la seguridad de las validaciones de JavaScript, entonces ¿por qué la primera pregunta dice que es una buena práctica?<br>
+                En general porque mejora la experiencia de usuario. Tambien es una buena practica porque es un añadido, por otra parte tambien exite una forma de revisar los datos por parte del servidor
+            </p>
+        <script src="j.js"></script>
     </body>
 </html>
