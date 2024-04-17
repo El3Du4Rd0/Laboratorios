@@ -1,63 +1,10 @@
 
-function promedio(arr){
-    if (arr.length === 0){
-        return 0;
-    }
-
-    var acum = 0;
-
-    for(var i of arr){
-        acum += i;
-    }
-
-    var promedio = acum / arr.length;
-    return promedio;
-}
-
-const fs = require('fs');
-
-function escribir(texto, archivo, callback){
-    fs.writeFile(archivo, texto, function(err){
-        if (err){
-            console.error('Error', err);
-        } else {
-            console.log('Exito');
-        }
-        callback(err);
-    });
-}
-
-function fibo(n){
-    if (n <= 1){
-        return n;
-    }
-
-    var prev = 0;
-    var acum = 1;
-    for(var i = 2; i <= n; i ++){
-        var next = prev + acum;
-        prev = acum;
-        acum = next;
-    }
-
-    return acum;
-}
-
-console.log(promedio([1,2,3,4,5]));
-console.log(escribir("hola", "h.txt", function(err){
-    if(!err){
-        console.log('Exito');
-    }
-}));
-console.log(fibo(6));
-
-
 const http = require("http");
 
 const server = http.createServer(    (request, response) => {
     console.log(request.url);
 
-    if(request.url == "/"){ // /test_json "GET" "POST" application/json
+    if(request.method === "GET" && request.url === "/"){ // /test_json "GET" "POST" application/json
        response.setHeader('Content-Type','text/html'); // text/plain text/html application/json
        response.write(`
        <!DOCTYPE html>
@@ -109,6 +56,22 @@ const server = http.createServer(    (request, response) => {
 </html>
        `);
        response.end();
+   } else if (request.method === 'POST' && request.url === "/data") {
+
+    let body = '';
+    request.on('data', chunk => {
+        body += chunk.toString();
+    });
+    request.on('end', () => {
+        console.log(body)
+        response.end();
+    });
+
+   } else {
+    response.statusCode = 404;
+    response.setHeader('Content-Type', 'text/plain');
+    response.write('Error 404');
+    response.end();
    }
 });
 
