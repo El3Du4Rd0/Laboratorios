@@ -22,9 +22,9 @@ app.use(session({
 
 const mariadb = require("mariadb");
 const pool = mariadb.createPool({
-    host:"127.0.0.1",
+    host:"localhost",
     user:"root",
-    password:"root",
+    password:"1234",
     database: "test",
     connectionLimit:5
 });
